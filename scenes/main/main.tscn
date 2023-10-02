@@ -8,6 +8,7 @@
 transform = Transform3D(0.973778, -0.0994943, 0.204591, 1.99351e-17, 0.899298, 0.437336, -0.227501, -0.425868, 0.875717, 2.08165e-12, 10, 2.08165e-12)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.5, 5)
+transform = Transform3D(1, -4.96191e-16, 3.16108e-16, 3.16108e-16, 0.906308, 0.422618, -4.96191e-16, -0.422618, 0.906308, 2.08165e-12, 2.5, 5)
 
-[node name="Card Hand" parent="." instance=ExtResource("1_cqbm3")]
+[node name="Card Hand" parent="Camera3D" instance=ExtResource("1_cqbm3")]
+transform = Transform3D(1, -6.81037e-22, 3.96132e-22, 9.29207e-24, 1, -4.41823e-10, -6.75111e-24, 4.37369e-08, 0.999999, 2.1684e-19, -2.06816, -4.18797)
