@@ -59,6 +59,7 @@ func _set_hand():
 		for i in total:
 			var card = _cards_in_hand[i]
 			var tween = create_tween()
+			tween.set_parallel()
 			tween.set_trans(Tween.TRANS_BOUNCE)
 			tween.set_ease(Tween.EASE_OUT)
 			
@@ -91,4 +92,6 @@ func _set_hand():
 			)
 			
 			await get_tree().create_timer(card_spawn_duration / 4).timeout
+			card.set_hand_transform()
+			
 			continue
