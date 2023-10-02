@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5upwfx10injv"]
+
+[ext_resource type="Script" path="res://scenes/card_hand/card_hand.gd" id="1_awfv2"]
+
+[node name="Card Hand" type="Node3D"]
+script = ExtResource("1_awfv2")
+card_spawn_duration = 0.5
