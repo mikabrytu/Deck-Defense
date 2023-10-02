@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddt7ty6idjq8d"]
+
+[ext_resource type="PackedScene" uid="uid://b5upwfx10injv" path="res://scenes/card_hand/card_hand.tscn" id="1_cqbm3"]
+
+[node name="Main" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.973778, -0.0994943, 0.204591, 1.99351e-17, 0.899298, 0.437336, -0.227501, -0.425868, 0.875717, 2.08165e-12, 10, 2.08165e-12)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.5, 5)
+
+[node name="Card Hand" parent="." instance=ExtResource("1_cqbm3")]
