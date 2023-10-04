@@ -32,6 +32,7 @@ func _ready():
 func _add_cards(amount = 1):
 	for i in amount:
 		var c = CARD.instantiate()
+		c.connect("card_played", _on_card_played)
 		add_child(c)
 		_cards_in_hand.append(c)
 		
@@ -56,6 +57,10 @@ func _set_hand():
 	var hand_ratio = 0.5
 	
 	if total > 1:
+		for c in _cards_in_hand:
+			c.global_position = global_position
+			c.global_rotation = global_rotation
+		
 		for i in total:
 			var card = _cards_in_hand[i]
 			var tween = create_tween()
@@ -95,3 +100,13 @@ func _set_hand():
 			card.set_hand_transform()
 			
 			continue
+
+
+# Listeners
+
+
+func _on_card_played(card):
+	var index = _cards_in_hand.find(card)
+	if index > -1:
+		_cards_in_hand.remove_at(index)
+		_set_hand()

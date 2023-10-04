@@ -9,6 +9,8 @@ size = Vector3(1.56254, 2.11308, 0.275759)
 
 [node name="Card" type="Area3D"]
 script = ExtResource("1_cdtx3")
+play_speed = 1.5
+play_duration = 0.2
 hover_y_position = 0.8
 hover_position_duration = 0.25
 hover_rotate_duration = 0.15
@@ -20,5 +22,6 @@ mesh = SubResource("PlaneMesh_nscxc")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_su15m")
 
+[connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
