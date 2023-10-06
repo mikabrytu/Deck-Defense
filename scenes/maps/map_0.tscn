@@ -1,0 +1,48 @@
+[gd_scene load_steps=9 format=3 uid="uid://cx7lrhuyp3lwt"]
+
+[ext_resource type="MeshLibrary" uid="uid://blhjvg0kmpr31" path="res://scenes/maps/tiles_library.tres" id="1_xn32y"]
+[ext_resource type="PackedScene" uid="uid://dtuf6nuxn8ksl" path="res://assets/environment/detail_rocks.gltf.glb" id="2_dottc"]
+[ext_resource type="PackedScene" uid="uid://c6xvssddhr5x7" path="res://assets/environment/detail_rocks_small.gltf.glb" id="3_j8bx2"]
+[ext_resource type="PackedScene" uid="uid://cx66fpasul4bs" path="res://assets/environment/mountain.gltf.glb" id="4_kx4ld"]
+[ext_resource type="PackedScene" uid="uid://cq2641nrgvo41" path="res://assets/environment/forest.gltf.glb" id="8_47e2w"]
+[ext_resource type="PackedScene" uid="uid://2aug3sqavuuq" path="res://assets/environment/detail_forestA.gltf.glb" id="9_1e8t8"]
+[ext_resource type="PackedScene" uid="uid://crlawaf4t1s3o" path="res://assets/environment/detail_forestB.gltf.glb" id="10_2k3e8"]
+[ext_resource type="PackedScene" uid="uid://qf7gy0bmdtxy" path="res://assets/buildings/castle.gltf.glb" id="11_dpm84"]
+
+[node name="Map 0" type="Node3D"]
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("1_xn32y")
+cell_size = Vector3(2, 1, 2)
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(65535, 65535, 1, 65535, 0, 1, 0, 0, 1, 0, 65535, 1, 65534, 65535, 1, 65534, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 65535, 1, 1, 65534, 1, 0, 65534, 1, 65535, 65534, 1441805, 65533, 65535, 1, 65533, 0, 1, 65533, 1, 1, 65533, 2, 1, 2, 2, 1, 2, 1, 1, 1, 65533, 1, 2, 65533, 1, 1, 65532, 1, 2, 65532, 1, 65533, 3, 1, 2, 3, 1, 3, 1, 655361, 3, 65533, 1, 65534, 1, 1, 65535, 1, 1, 2, 65534, 1, 3, 65534, 1, 3, 65532, 1, 4, 65532, 1, 4, 65533, 1, 4, 65535, 1, 4, 0, 1, 4, 1, 1, 4, 2, 1, 4, 3, 1, 3, 3, 1, 2, 0, 1, 2, 65535, 1, 65532, 65535, 1, 65532, 0, 1, 65532, 1, 1, 65532, 2, 1, 65532, 3, 1, 65532, 4, 1, 65531, 65530, 1, 65531, 65531, 1441792, 65531, 65532, 1441792, 65531, 65534, 1441792, 65531, 65535, 1, 65531, 0, 1, 65531, 3, 1, 65531, 4, 1, 65531, 5, 1, 65531, 2, 1, 65531, 1, 1, 65530, 65529, 1, 65530, 65530, 1, 65530, 65531, 1, 65530, 65532, 1, 65530, 65533, 1, 65530, 65534, 1, 65530, 65535, 1, 65530, 0, 1, 65530, 1, 1, 65530, 2, 1, 65530, 3, 1, 65530, 4, 1, 65530, 5, 1, 65530, 6, 1, 65531, 6, 1, 65532, 6, 1, 65533, 6, 1, 65534, 6, 1, 65535, 6, 1, 0, 6, 1, 5, 65531, 1, 6, 65530, 1, 7, 65529, 1, 7, 65530, 1, 7, 65531, 1, 7, 65533, 1, 7, 65534, 1, 5, 4, 1, 6, 5, 1, 7, 6, 1, 6, 6, 1, 5, 6, 1, 4, 6, 1, 3, 6, 1, 2, 6, 1, 1, 6, 1, 7, 65535, 1, 7, 0, 1, 7, 1, 1, 7, 2, 1, 7, 3, 1, 7, 4, 1, 7, 5, 1, 6, 4, 1, 6, 3, 1, 6, 2, 1, 6, 1, 1, 6, 0, 1, 6, 65535, 1, 6, 65534, 1, 6, 65531, 1, 5, 65532, 1, 5, 65535, 1, 5, 0, 1, 5, 1, 1, 5, 2, 1, 5, 3, 1, 65533, 4, 1, 65534, 4, 1, 1, 4, 1, 2, 4, 1, 3, 4, 1, 4, 4, 1, 65532, 5, 1, 65533, 5, 1, 65534, 5, 1, 65535, 5, 1, 0, 5, 1, 1, 5, 1, 2, 5, 1, 3, 5, 1, 4, 5, 1, 5, 5, 1, 1, 65531, 1, 2, 65531, 1, 3, 65531, 1, 4, 65531, 1, 65532, 65530, 1, 65533, 65530, 1, 65534, 65530, 1, 65535, 65530, 1048577, 0, 65530, 1, 1, 65530, 1, 2, 65530, 1, 3, 65530, 1, 4, 65530, 1, 5, 65530, 1, 65531, 65529, 1, 65532, 65529, 1, 65533, 65529, 1, 65534, 65529, 1, 65535, 65529, 1, 0, 65529, 1, 1, 65529, 1, 2, 65529, 1, 3, 65529, 1, 4, 65529, 1, 5, 65529, 1, 6, 65529, 1, 65529, 6, 1, 65529, 5, 1, 65529, 4, 1, 65529, 3, 1, 65529, 2, 1, 65529, 1, 1, 65529, 0, 1, 65529, 65535, 1, 65529, 65534, 1, 65529, 65533, 1, 65529, 65532, 1, 65529, 65531, 1, 65529, 65530, 1, 65529, 65529, 1, 65528, 6, 1, 65528, 5, 1, 65528, 4, 1, 65528, 3, 1, 65528, 2, 1, 65528, 1, 1, 65528, 0, 1, 65528, 65535, 1, 65528, 65534, 1, 65528, 65533, 1, 65528, 65532, 1, 65528, 65531, 1, 65528, 65530, 1, 65528, 65529, 1, 3, 2, 1, 65535, 4, 1441792, 65535, 3, 1441792, 65534, 3, 1441792, 65534, 2, 1441792, 1, 2, 1441792, 1, 3, 1441792, 0, 4, 1441792, 65535, 2, 1441792, 0, 2, 1441792, 0, 3, 1441792, 65531, 65533, 1441792, 65532, 65531, 1441792, 65533, 65531, 1441792, 65534, 65531, 1441792, 0, 65533, 1441805, 7, 65532, 1, 6, 65532, 1, 4, 65534, 1, 3, 65535, 1, 3, 0, 1, 6, 65533, 1, 5, 65533, 1, 5, 65534, 1, 65532, 65532, 1048589, 65534, 65534, 1441811, 65533, 65532, 1048595, 65534, 65532, 1048595, 65535, 65531, 1048589, 0, 65531, 13, 65532, 65533, 655379, 65532, 65534, 655373, 65533, 65534, 1441811, 65535, 65533, 1048592, 0, 65532, 19, 65535, 65532, 1441808, 65533, 65533, 1048641, 65534, 65533, 1048641)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="Environment" type="Node3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 2.08165e-12, -1, 2.08165e-12)
+
+[node name="detail_rocks_gltf" parent="Environment" instance=ExtResource("2_dottc")]
+transform = Transform3D(-0.500423, 0, 1.93638, 0, 2, 0, -1.93638, 0, -0.500423, -5.58721, 1.01035, 0.572646)
+
+[node name="detail_rocks_small_gltf" parent="Environment" instance=ExtResource("3_j8bx2")]
+transform = Transform3D(1.0194, 0, -1.7207, 0, 2, 0, 1.7207, 0, 1.0194, 3.76076, 1.00792, 2.10129)
+
+[node name="mountain_gltf" parent="Environment" instance=ExtResource("4_kx4ld")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 4.80567, 1.03824, 4.71842)
+
+[node name="forest_gltf" parent="Environment" instance=ExtResource("8_47e2w")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 4.92249, 0.999999, -4.91405)
+
+[node name="detail_forestA_gltf" parent="Environment" instance=ExtResource("9_1e8t8")]
+transform = Transform3D(-0.811441, 0, 0.584434, 0, 1, 0, -0.584434, 0, -0.811441, -5.86615, 1, 5.94636)
+
+[node name="detail_forestB_gltf" parent="Environment" instance=ExtResource("10_2k3e8")]
+transform = Transform3D(0.475071, 0, -0.879947, 0, 1, 0, 0.879947, 0, 0.475071, -6.29599, 1, -4.79624)
+
+[node name="detail_forestB_gltf2" parent="Environment" instance=ExtResource("10_2k3e8")]
+transform = Transform3D(-0.999956, 0, 0.0093725, 0, 1, 0, -0.00937251, 0, -0.999956, -5.53758, 1, -4.99196)
+
+[node name="castle_gltf" parent="." instance=ExtResource("11_dpm84")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 2.08165e-12, 1, 2.08165e-12)

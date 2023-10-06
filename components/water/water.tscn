@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://oqycu32va1cv"]
+
+[ext_resource type="Shader" path="res://components/water/water.gdshader" id="1_wap1x"]
+[ext_resource type="Texture2D" uid="uid://b0k60biluq3ee" path="res://components/water/WaterDistortion.png" id="2_wks0f"]
+[ext_resource type="Texture2D" uid="uid://biiopwd21wdja" path="res://components/water/PerlinNoise.png" id="3_c55nv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vin1m"]
+render_priority = 0
+shader = ExtResource("1_wap1x")
+shader_parameter/beer_factor = 0.8
+shader_parameter/foam_distance = 0.01
+shader_parameter/foam_max_distance = 0.5
+shader_parameter/foam_min_distance = 0.05
+shader_parameter/foam_color = Color(1, 1, 1, 1)
+shader_parameter/surface_noise_tiling = Vector2(1, 4)
+shader_parameter/surface_noise_scroll = Vector3(0.03, 0.03, 0)
+shader_parameter/surface_noise_cutoff = 0.85
+shader_parameter/surface_distortion_amount = 1.0
+shader_parameter/_DepthGradientShallow = Color(0.325, 0.807, 0.971, 0.725)
+shader_parameter/_DepthGradientDeep = Color(0.086, 0.407, 1, 0.749)
+shader_parameter/_DepthMaxDistance = 1.0
+shader_parameter/_DepthFactor = 1.0
+shader_parameter/surfaceNoise = ExtResource("3_c55nv")
+shader_parameter/distortNoise = ExtResource("2_wks0f")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_udqjq"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_vcn6b"]
+
+[node name="Water" type="Node3D"]
+
+[node name="Plane" type="MeshInstance3D" parent="."]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
+material_override = SubResource("ShaderMaterial_vin1m")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_udqjq")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
+visible = false
+mesh = SubResource("BoxMesh_vcn6b")

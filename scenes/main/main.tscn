@@ -1,14 +1,62 @@
-[gd_scene load_steps=2 format=3 uid="uid://ddt7ty6idjq8d"]
+[gd_scene load_steps=6 format=3 uid="uid://ddt7ty6idjq8d"]
 
-[ext_resource type="PackedScene" uid="uid://b5upwfx10injv" path="res://scenes/card_hand/card_hand.tscn" id="1_cqbm3"]
+[ext_resource type="PackedScene" uid="uid://cx7lrhuyp3lwt" path="res://scenes/maps/map_0.tscn" id="2_1kpld"]
+[ext_resource type="PackedScene" uid="uid://oqycu32va1cv" path="res://components/water/water.tscn" id="3_ghvbj"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3osvi"]
+sky_top_color = Color(0.682353, 0.615686, 0.501961, 1)
+sky_curve = 0.310579
+ground_bottom_color = Color(0.243137, 0.490196, 0.6, 1)
+ground_curve = 0.422244
+ground_energy_multiplier = 0.3
+
+[sub_resource type="Sky" id="Sky_2k5b2"]
+sky_material = SubResource("ProceduralSkyMaterial_3osvi")
+
+[sub_resource type="Environment" id="Environment_ym1y1"]
+background_mode = 2
+sky = SubResource("Sky_2k5b2")
+sky_custom_fov = 45.0
+ambient_light_source = 3
+reflected_light_source = 2
+tonemap_mode = 3
+ssr_enabled = true
+ssr_fade_in = 0.579562
+ssr_fade_out = 3.4822
+ssao_enabled = true
+ssao_radius = 1.36
+ssao_intensity = 4.52
+sdfgi_use_occlusion = true
+sdfgi_min_cell_size = 6.87217
+sdfgi_cascade0_distance = 439.819
+sdfgi_max_distance = 7037.1
+sdfgi_y_scale = 2
+fog_light_color = Color(0.541176, 0.572549, 0.294118, 1)
+fog_light_energy = 0.45
+fog_aerial_perspective = 0.8
+adjustment_enabled = true
+adjustment_saturation = 1.5
 
 [node name="Main" type="Node3D"]
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ym1y1")
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.973778, -0.0994943, 0.204591, 1.99351e-17, 0.899298, 0.437336, -0.227501, -0.425868, 0.875717, 2.08165e-12, 10, 2.08165e-12)
+transform = Transform3D(0.45685, 0.824848, -0.333038, -0.187731, 0.455361, 0.870289, 0.869509, -0.33507, 0.362881, 2.08165e-12, 10, 10)
+light_energy = 0.35
+shadow_enabled = true
+shadow_bias = 2.0
+shadow_opacity = 0.8
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, -4.96191e-16, 3.16108e-16, 3.16108e-16, 0.906308, 0.422618, -4.96191e-16, -0.422618, 0.906308, 2.08165e-12, 2.5, 5)
+transform = Transform3D(0.693771, -0.480604, 0.536378, -4.00853e-09, 0.744767, 0.667324, -0.720196, -0.46297, 0.516698, 18.8075, 23.0576, 17.74)
+projection = 1
+fov = 63.8
+size = 16.5
+far = 70.0
 
-[node name="Card Hand" parent="Camera3D" instance=ExtResource("1_cqbm3")]
-transform = Transform3D(1, -6.81037e-22, 3.96132e-22, 9.29207e-24, 1, -4.41823e-10, -6.75111e-24, 4.37369e-08, 0.999999, 2.1684e-19, -2.06816, -4.18797)
+[node name="Map 0" parent="." instance=ExtResource("2_1kpld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -0.865, 2.08165e-12)
+
+[node name="Water" parent="." instance=ExtResource("3_ghvbj")]

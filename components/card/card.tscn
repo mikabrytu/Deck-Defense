@@ -5,7 +5,7 @@
 [sub_resource type="PlaneMesh" id="PlaneMesh_nscxc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_su15m"]
-size = Vector3(1.56254, 2.11308, 0.275759)
+size = Vector3(3.01683, 4.22611, 0.275759)
 
 [node name="Card" type="Area3D"]
 script = ExtResource("1_cdtx3")
@@ -16,7 +16,8 @@ hover_position_duration = 0.25
 hover_rotate_duration = 0.15
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.7, -6.66422e-31, 2.91302e-38, 0, -4.37114e-08, -1, 4.66495e-31, 1, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(1.4, -1.33284e-30, 5.82604e-38, 0, -8.74228e-08, -2, 9.3299e-31, 2, -8.74228e-08, 0, 0, 0)
+cast_shadow = 0
 mesh = SubResource("PlaneMesh_nscxc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
