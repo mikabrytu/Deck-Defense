@@ -2,6 +2,8 @@ extends Node3D
 
 
 @export var card_spawn_duration: float
+@export_category("Deck")
+@export var deck: Array[CardResource]
 @export_category("Hand Placement")
 @export var position_curve: Curve
 @export var height_curve: Curve
@@ -15,13 +17,14 @@ var _cards_in_hand: Array[Node3D]
 var _position_multiplier: int
 
 const CARD = preload("res://components/card/card.tscn")
+const Z_OFFSET = 0.05
 
 
 # Godot Messages
 
 
 func _ready():
-	$MeshInstance3D.hide()
+	$"Debug Hand Position".hide()
 	
 	_add_cards(card_amount)
 
@@ -33,6 +36,8 @@ func _add_cards(amount = 1):
 	for i in amount:
 		var c = CARD.instantiate()
 		c.connect("card_played", _on_card_played)
+		c.position = $"Spawn Point".position
+		c.set_card_data(deck.pick_random())
 		add_child(c)
 		_cards_in_hand.append(c)
 		
@@ -69,7 +74,7 @@ func _set_hand(animate: bool = true):
 			var hand_position = Vector3(
 				ratio_values.x,
 				ratio_values.y,
-				card.position.z
+				card.position.z + (-Z_OFFSET * i)
 			)
 			
 			var hand_rotation = card.rotation

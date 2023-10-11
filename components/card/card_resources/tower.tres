@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=3 format=3 uid="uid://do3vvfq7tq68m"]
+
+[ext_resource type="Script" path="res://components/card/card_resource.gd" id="1_ejhh8"]
+[ext_resource type="Texture2D" uid="uid://denii2bhmvpof" path="res://assets/card_icons/shield.jpg" id="1_ofqjq"]
+
+[resource]
+script = ExtResource("1_ejhh8")
+name = "Tower"
+cost = 7
+image = ExtResource("1_ofqjq")

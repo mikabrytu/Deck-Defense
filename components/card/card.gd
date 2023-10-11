@@ -6,27 +6,27 @@ signal card_played(card)
 @export_category("Play")
 @export var play_speed: float
 @export var play_duration: float
+@export var play_showcase: float
 @export_category("Hover")
 @export var hover_y_position: float
 @export var hover_position_duration: float
 @export var hover_rotate_duration: float
-@export_category("Debug")
-@export var node_name: String
 
 var _hover_tween: Tween
 var _hand_position: Vector3
 var _hand_rotation: Vector3
 var _is_playing: bool = false
 
-
-# Godot Messages
-
-
-func _ready():
-	node_name = name
+const HOVER_Z_AXIS = 0.5
 
 
 # Public API
+
+
+func set_card_data(data: CardResource):
+	$Name.text = data.name
+	$Cost.text = str(data.cost)
+	$Icon.texture = data.image
 
 
 func set_hand_transform():
@@ -38,6 +38,8 @@ func set_hand_transform():
 
 
 func _show_on_hover():
+	position.z += HOVER_Z_AXIS
+	
 	if _hover_tween:
 		_hover_tween.kill()
 	
@@ -95,7 +97,7 @@ func _on_input_event(camera, event, position, normal, shape_idx):
 			play_duration
 		)
 		
-		await get_tree().create_timer(play_duration).timeout
+		await get_tree().create_timer(play_showcase).timeout
 		
 		card_played.emit(self)
 		queue_free()

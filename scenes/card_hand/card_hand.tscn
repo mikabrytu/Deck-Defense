@@ -1,6 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://b5upwfx10injv"]
+[gd_scene load_steps=12 format=3 uid="uid://b5upwfx10injv"]
 
 [ext_resource type="Script" path="res://scenes/card_hand/card_hand.gd" id="1_awfv2"]
+[ext_resource type="Resource" uid="uid://bqs3lcjx8t23j" path="res://components/card/card_resources/archer.tres" id="2_10vng"]
+[ext_resource type="Resource" uid="uid://bir3ept7iymnx" path="res://components/card/card_resources/farm.tres" id="3_8ck8n"]
+[ext_resource type="Resource" uid="uid://dmlwp7031jifc" path="res://components/card/card_resources/soldier.tres" id="3_bv3if"]
+[ext_resource type="Resource" uid="uid://b6qnnsypke4in" path="res://components/card/card_resources/healer.tres" id="4_2a40i"]
+[ext_resource type="Resource" uid="uid://do3vvfq7tq68m" path="res://components/card/card_resources/tower.tres" id="5_4gs0j"]
 
 [sub_resource type="Curve" id="Curve_fhkho"]
 min_value = -1.0
@@ -17,17 +22,27 @@ min_value = -1.0
 _data = [Vector2(0, 1), 0.0, -5.01099, 0, 0, Vector2(0.5, 0.0106195), -0.286232, -0.286232, 0, 0, Vector2(1, -1), -4.84484, 0.0, 0, 0]
 point_count = 3
 
+[sub_resource type="BoxMesh" id="BoxMesh_gee0m"]
+
 [sub_resource type="SphereMesh" id="SphereMesh_an8xo"]
 
 [node name="Card Hand" type="Node3D"]
 script = ExtResource("1_awfv2")
 card_spawn_duration = 0.5
+deck = Array[Resource("res://components/card/card_resource.gd")]([ExtResource("2_10vng"), ExtResource("3_8ck8n"), ExtResource("4_2a40i"), ExtResource("5_4gs0j"), ExtResource("3_bv3if")])
 position_curve = SubResource("Curve_fhkho")
 height_curve = SubResource("Curve_1femb")
 height_multiplier = 1.0
 rotation_curve = SubResource("Curve_42g4r")
 rotation_multiplier = 0.18
-card_amount = 10
+card_amount = 5
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="Spawn Point" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.5, 2.08165e-12)
+
+[node name="Debug" type="MeshInstance3D" parent="Spawn Point"]
+visible = false
+mesh = SubResource("BoxMesh_gee0m")
+
+[node name="Debug Hand Position" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_an8xo")

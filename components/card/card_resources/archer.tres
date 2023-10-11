@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=3 format=3 uid="uid://bqs3lcjx8t23j"]
+
+[ext_resource type="Script" path="res://components/card/card_resource.gd" id="1_c5rqi"]
+[ext_resource type="Texture2D" uid="uid://dbqcrboyali7p" path="res://assets/card_icons/bow.jpg" id="1_y4u6h"]
+
+[resource]
+script = ExtResource("1_c5rqi")
+name = "Archer"
+cost = 3
+image = ExtResource("1_y4u6h")

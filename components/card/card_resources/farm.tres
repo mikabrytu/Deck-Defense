@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CardResource" load_steps=3 format=3 uid="uid://bir3ept7iymnx"]
+
+[ext_resource type="Script" path="res://components/card/card_resource.gd" id="1_lkiuc"]
+[ext_resource type="Texture2D" uid="uid://23w5t6aew8lk" path="res://assets/card_icons/coin.jpg" id="1_wsfs1"]
+
+[resource]
+script = ExtResource("1_lkiuc")
+name = "Farm"
+cost = 5
+image = ExtResource("1_wsfs1")
