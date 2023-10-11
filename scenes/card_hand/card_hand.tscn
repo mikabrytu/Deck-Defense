@@ -23,12 +23,11 @@ point_count = 3
 script = ExtResource("1_awfv2")
 card_spawn_duration = 0.5
 position_curve = SubResource("Curve_fhkho")
-position_multiplier = 2.5
 height_curve = SubResource("Curve_1femb")
 height_multiplier = 1.0
 rotation_curve = SubResource("Curve_42g4r")
-rotation_multiplier = 0.3
-card_amount = 5
+rotation_multiplier = 0.18
+card_amount = 10
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_an8xo")

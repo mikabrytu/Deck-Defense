@@ -12,8 +12,8 @@ script = ExtResource("1_cdtx3")
 play_speed = 1.5
 play_duration = 0.2
 hover_y_position = 0.8
-hover_position_duration = 0.25
-hover_rotate_duration = 0.15
+hover_position_duration = 0.1
+hover_rotate_duration = 0.05
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.4, -1.33284e-30, 5.82604e-38, 0, -8.74228e-08, -2, 9.3299e-31, 2, -8.74228e-08, 0, 0, 0)

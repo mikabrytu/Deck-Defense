@@ -4,7 +4,6 @@ extends Node3D
 @export var card_spawn_duration: float
 @export_category("Hand Placement")
 @export var position_curve: Curve
-@export var position_multiplier: float
 @export var height_curve: Curve
 @export var height_multiplier: float
 @export var rotation_curve: Curve
@@ -13,6 +12,7 @@ extends Node3D
 @export var card_amount: int
 
 var _cards_in_hand: Array[Node3D]
+var _position_multiplier: int
 
 const CARD = preload("res://components/card/card.tscn")
 
@@ -52,52 +52,54 @@ func _add_cards(amount = 1):
 	_set_hand()
 
 
-func _set_hand():
+func _set_hand(animate: bool = true):
 	var total = _cards_in_hand.size()
 	var hand_ratio = 0.5
 	
 	if total > 1:
-		for c in _cards_in_hand:
-			c.global_position = global_position
-			c.global_rotation = global_rotation
-		
 		for i in total:
 			var card = _cards_in_hand[i]
-			var tween = create_tween()
-			tween.set_parallel()
-			tween.set_trans(Tween.TRANS_BOUNCE)
-			tween.set_ease(Tween.EASE_OUT)
 			
 			hand_ratio = float(i) / float(total - 1)
 			var ratio_values = Vector2(
-				position_curve.sample(hand_ratio) * position_multiplier,
+				position_curve.sample(hand_ratio) * total,
 				height_curve.sample(hand_ratio) * height_multiplier
 			)
 			
 			var hand_position = Vector3(
-				card.global_position.x + ratio_values.x,
-				card.global_position.y + ratio_values.y,
-				card.global_position.z
+				ratio_values.x,
+				ratio_values.y,
+				card.position.z
 			)
 			
 			var hand_rotation = card.rotation
 			hand_rotation.z = rotation_curve.sample(hand_ratio) * rotation_multiplier
 			
-			tween.tween_property(
-				card, 
-				"global_position", 
-				hand_position, 
-				card_spawn_duration / 4
-			)
-			tween.tween_property(
-				card,
-				"rotation",
-				hand_rotation,
-				card_spawn_duration / 4
-			)
-			
-			await get_tree().create_timer(card_spawn_duration / 4).timeout
-			card.set_hand_transform()
+			if animate:
+				var tween = create_tween()
+				tween.set_parallel()
+				tween.set_trans(Tween.TRANS_BOUNCE)
+				tween.set_ease(Tween.EASE_OUT)
+				
+				tween.tween_property(
+					card, 
+					"position", 
+					hand_position, 
+					card_spawn_duration / 4
+				)
+				tween.tween_property(
+					card,
+					"rotation",
+					hand_rotation,
+					card_spawn_duration / 4
+				)
+				
+				await get_tree().create_timer(card_spawn_duration / 4).timeout
+				card.set_hand_transform()
+			else:
+				card.position = hand_position
+				card.rotation = hand_rotation
+				card.set_hand_transform()
 			
 			continue
 
@@ -109,4 +111,4 @@ func _on_card_played(card):
 	var index = _cards_in_hand.find(card)
 	if index > -1:
 		_cards_in_hand.remove_at(index)
-		_set_hand()
+		_set_hand(false)
