@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/main/main.gd" id="1_ok55g"]
 [ext_resource type="PackedScene" uid="uid://cx7lrhuyp3lwt" path="res://scenes/maps/map_0.tscn" id="2_1kpld"]
-[ext_resource type="PackedScene" uid="uid://b5upwfx10injv" path="res://scenes/card_hand/card_hand.tscn" id="3_cyua4"]
+[ext_resource type="PackedScene" uid="uid://b5upwfx10injv" path="res://scenes/card_controller/card_controller.tscn" id="3_cyua4"]
 [ext_resource type="PackedScene" uid="uid://oqycu32va1cv" path="res://components/water/water.tscn" id="3_ghvbj"]
 [ext_resource type="Environment" uid="uid://blq86t7w2w2jx" path="res://scenes/main/world_environment.tres" id="4_wm2y1"]
 
@@ -10,6 +10,7 @@
 script = ExtResource("1_ok55g")
 
 [node name="FPS Counter" type="Label" parent="."]
+visible = false
 offset_right = 40.0
 offset_bottom = 23.0
 theme_override_colors/font_color = Color(0, 0.843137, 0, 1)
@@ -33,8 +34,8 @@ fov = 63.8
 size = 16.5
 far = 70.0
 
-[node name="Card Hand" parent="Camera3D" instance=ExtResource("3_cyua4")]
-transform = Transform3D(1, -3.62244e-09, -5.97066e-09, -3.62244e-09, 1, -2.31645e-08, 2.38317e-08, 6.63785e-09, 1, 3.57628e-07, -5.9245, -4.88385)
+[node name="Card Controller" parent="Camera3D" instance=ExtResource("3_cyua4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -6, -5)
 
 [node name="Map 0" parent="." instance=ExtResource("2_1kpld")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -0.865, 2.08165e-12)

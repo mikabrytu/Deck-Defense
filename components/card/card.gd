@@ -1,7 +1,7 @@
 extends Area3D
 
 
-signal card_played(card)
+signal card_played_on_contrller(card)
 
 @export_category("Play")
 @export var play_speed: float
@@ -12,6 +12,7 @@ signal card_played(card)
 @export var hover_position_duration: float
 @export var hover_rotate_duration: float
 
+var _card_data: CardResource
 var _hover_tween: Tween
 var _hand_position: Vector3
 var _hand_rotation: Vector3
@@ -24,6 +25,7 @@ const HOVER_Z_AXIS = 0.5
 
 
 func set_card_data(data: CardResource):
+	_card_data = data
 	$Name.text = data.name
 	$Cost.text = str(data.cost)
 	$Icon.texture = data.image
@@ -99,5 +101,6 @@ func _on_input_event(camera, event, position, normal, shape_idx):
 		
 		await get_tree().create_timer(play_showcase).timeout
 		
-		card_played.emit(self)
+		EventCenter.card_played.emit(self, _card_data)
+		card_played_on_contrller.emit(self)
 		queue_free()
