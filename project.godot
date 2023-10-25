@@ -50,3 +50,7 @@ click_right={
 3d_physics/layer_2="Enemy"
 3d_physics/layer_3="Building"
 3d_physics/layer_4="World"
+
+[navigation]
+
+3d/default_cell_height=0.01

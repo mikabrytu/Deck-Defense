@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://cvlay1rgusg2m"]
+
+[ext_resource type="Script" path="res://components/unit/enemy/skelly.gd" id="1_eyx11"]
+[ext_resource type="Script" path="res://components/health/health.gd" id="2_m6325"]
+[ext_resource type="Script" path="res://components/movement/movement.gd" id="3_bqquc"]
+[ext_resource type="PackedScene" uid="uid://d2pes8idofl8h" path="res://components/attack/attack.tscn" id="4_7boo6"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_ta7oy"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ma10t"]
+
+[node name="Skelly" type="CharacterBody3D"]
+script = ExtResource("1_eyx11")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_ta7oy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_ma10t")
+
+[node name="Health" type="Node3D" parent="."]
+script = ExtResource("2_m6325")
+max_health = 5
+
+[node name="Movement" type="Node3D" parent="."]
+script = ExtResource("3_bqquc")
+speed = 3.0
+
+[node name="Attack" parent="." instance=ExtResource("4_7boo6")]
+
+[node name="Agent" type="NavigationAgent3D" parent="."]

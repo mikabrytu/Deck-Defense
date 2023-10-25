@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://ccp6n6dm1034k"]
+
+[ext_resource type="Script" path="res://components/structure/castle/castle.gd" id="1_hdiyd"]
+[ext_resource type="PackedScene" uid="uid://qf7gy0bmdtxy" path="res://assets/buildings/castle.gltf.glb" id="2_e674h"]
+[ext_resource type="PackedScene" uid="uid://dmng3fstvha03" path="res://components/health/health.tscn" id="3_24mbk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_owwth"]
+size = Vector3(1.77301, 2.07442, 1.79074)
+
+[node name="Castle" type="StaticBody3D"]
+script = ExtResource("1_hdiyd")
+
+[node name="model" parent="." instance=ExtResource("2_e674h")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00175, 3.57628e-07)
+shape = SubResource("BoxShape3D_owwth")
+
+[node name="Health" parent="." instance=ExtResource("3_24mbk")]
+max_health = 100

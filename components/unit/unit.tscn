@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://ffduhtsicmir"]
+
+[ext_resource type="Script" path="res://components/unit/unit.gd" id="1_4rjlr"]
+[ext_resource type="Script" path="res://components/health/health.gd" id="2_lfwxr"]
+[ext_resource type="Script" path="res://components/movement/movement.gd" id="3_4f2nk"]
+[ext_resource type="PackedScene" uid="uid://d2pes8idofl8h" path="res://components/attack/attack.tscn" id="4_a0rtb"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_gpsdc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t2swh"]
+
+[node name="Unit" type="CharacterBody3D"]
+script = ExtResource("1_4rjlr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_gpsdc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_t2swh")
+
+[node name="Health" type="Node3D" parent="."]
+script = ExtResource("2_lfwxr")
+
+[node name="Movement" type="Node3D" parent="."]
+script = ExtResource("3_4f2nk")
+
+[node name="Attack" parent="." instance=ExtResource("4_a0rtb")]
+
+[node name="Agent" type="NavigationAgent3D" parent="."]
+
+[node name="Attack Interval" type="Timer" parent="."]
+wait_time = 1.5

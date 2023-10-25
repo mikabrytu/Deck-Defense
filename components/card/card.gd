@@ -1,7 +1,7 @@
 extends Area3D
 
 
-signal card_played_on_contrller(card)
+signal card_played_on_contrller(card: Area3D, data: CardResource)
 
 @export_category("Play")
 @export var play_speed: float
@@ -85,7 +85,7 @@ func _on_mouse_exited():
 		_reset_transform()
 
 
-func _on_input_event(camera, event, position, normal, shape_idx):
+func _on_input_event(_camera, event, _position, _normal, _shape_idx):
 	if event is InputEventMouseButton and event.is_action_pressed("click_left"):
 		_is_playing = true
 		
@@ -101,6 +101,5 @@ func _on_input_event(camera, event, position, normal, shape_idx):
 		
 		await get_tree().create_timer(play_showcase).timeout
 		
-		EventCenter.card_played.emit(self, _card_data)
-		card_played_on_contrller.emit(self)
+		card_played_on_contrller.emit(self, _card_data)
 		queue_free()

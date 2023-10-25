@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://clo26w5d5dvfh"]
+
+[ext_resource type="Script" path="res://components/unit/player/archer/archer.gd" id="1_cby24"]
+[ext_resource type="Script" path="res://components/health/health.gd" id="2_084xm"]
+[ext_resource type="Script" path="res://components/movement/movement.gd" id="3_xid8q"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0liwv"]
+albedo_color = Color(0.329412, 1, 0.239216, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gpsdc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t2swh"]
+
+[node name="Archer" type="CharacterBody3D"]
+script = ExtResource("1_cby24")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_0liwv")
+mesh = SubResource("BoxMesh_gpsdc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_t2swh")
+
+[node name="Health" type="Node3D" parent="."]
+script = ExtResource("2_084xm")
+
+[node name="Movement" type="Node3D" parent="."]
+script = ExtResource("3_xid8q")
+
+[node name="Agent" type="NavigationAgent3D" parent="."]

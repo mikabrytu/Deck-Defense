@@ -16,9 +16,21 @@ func set_parent(parent):
 
 
 func move(direction):
+	if _parent == null:
+		set_parent(get_parent())
+	
 	var velocity = direction * speed
-	_parent.velocity = velocity
+	_parent.velocity = _parent.velocity.move_toward(velocity, 0.25)
 	_parent.move_and_slide()
+
+
+func rotate_towards(target, delta):
+#	# gets the angle we want to face
+#	var angle_to_player = global_position.direction_to(target).angle_to(target)
+#
+#	# slowly changes the rotation to face the angle
+#	rotation = move_toward(rotation, angle_to_player, delta)
+	pass
 
 
 func get_speed() -> float:

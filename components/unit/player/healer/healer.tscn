@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://b01dwf1mfs21l"]
+
+[ext_resource type="Script" path="res://components/unit/player/healer/healer.gd" id="1_rrlbr"]
+[ext_resource type="Script" path="res://components/health/health.gd" id="2_smutt"]
+[ext_resource type="Script" path="res://components/movement/movement.gd" id="3_1u46t"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tnpq3"]
+albedo_color = Color(1, 0.2, 0.666667, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gpsdc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t2swh"]
+
+[node name="Healer" type="CharacterBody3D"]
+script = ExtResource("1_rrlbr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_tnpq3")
+mesh = SubResource("BoxMesh_gpsdc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_t2swh")
+
+[node name="Health" type="Node3D" parent="."]
+script = ExtResource("2_smutt")
+
+[node name="Movement" type="Node3D" parent="."]
+script = ExtResource("3_1u46t")
+
+[node name="Agent" type="NavigationAgent3D" parent="."]

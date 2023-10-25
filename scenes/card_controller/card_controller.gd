@@ -14,7 +14,6 @@ extends Node3D
 @export var card_amount: int
 
 var _cards_in_hand: Array[Area3D]
-var _position_multiplier: int
 
 const CARD = preload("res://components/card/card.tscn")
 const Z_OFFSET = 0.05
@@ -112,8 +111,11 @@ func _set_hand(animate: bool = true):
 # Listeners
 
 
-func _on_card_played(card):
+func _on_card_played(card: Area3D, data: CardResource):
 	var index = _cards_in_hand.find(card)
 	if index > -1:
 		_cards_in_hand.remove_at(index)
 		_set_hand(false)
+	
+	if data.unit != null:
+		EventCenter.unit_spawned.emit(data.unit)
