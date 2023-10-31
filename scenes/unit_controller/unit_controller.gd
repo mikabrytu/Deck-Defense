@@ -1,9 +1,10 @@
 extends Node3D
 
 
+@export_category("Player Settings")
+@export var player_spawn_point: Marker3D
 @export_category("Enemy Settings")
 @export var enemy_list: Array[PackedScene]
-@export var enemy_spawn_points: Array[Marker3D]
 @export var enemy_target: Node3D
 
 
@@ -19,11 +20,15 @@ func _ready():
 
 func _on_unit_spawned(unit: PackedScene):
 	var u = unit.instantiate()
+	u.set_unit()
+	u.position = player_spawn_point.position
+	
 	add_child(u)
 
 
 func _on_enemy_spawn_timer_timeout():
-	var point = enemy_spawn_points.pick_random()
+	var point = $"Enemy Spawn Path/Locations"
+	point.progress_ratio = randf()
 	
 	# TODO: Make enemy spawn difficulty increase over time
 	var e = enemy_list[0].instantiate() 

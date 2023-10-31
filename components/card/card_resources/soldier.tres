@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://components/card/card_resource.gd" id="1_2ypve"]
 [ext_resource type="Texture2D" uid="uid://dtuaa5g6ri0sd" path="res://assets/card_icons/sword.jpg" id="1_88xg5"]
-[ext_resource type="PackedScene" uid="uid://cl3jbkmewj2jn" path="res://components/unit/soldier/soldier.tscn" id="3_ddctr"]
+[ext_resource type="PackedScene" uid="uid://cwh5xyde2x4f6" path="res://components/unit/player/soldier/soldier.tscn" id="3_ddctr"]
 
 [resource]
 script = ExtResource("1_2ypve")

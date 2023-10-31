@@ -7,17 +7,5 @@ extends StaticBody3D
 # Godot Messages
 
 
-func _ready():
-	EventCenter.damage.connect(_on_damage)
-
-
-func _process(delta):
+func _process(_delta):
 	print("Castle Health: %s" % str(health.get_current()))
-
-
-# Listeners
-
-
-func _on_damage(h, damage):
-	if h == health:
-		health.damage(damage)

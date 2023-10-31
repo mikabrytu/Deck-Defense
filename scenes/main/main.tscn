@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://scenes/main/main.gd" id="1_ok55g"]
 [ext_resource type="PackedScene" uid="uid://cx7lrhuyp3lwt" path="res://scenes/maps/map_0.tscn" id="2_1kpld"]
-[ext_resource type="PackedScene" uid="uid://b5upwfx10injv" path="res://scenes/card_controller/card_controller.tscn" id="3_cyua4"]
 [ext_resource type="PackedScene" uid="uid://oqycu32va1cv" path="res://components/water/water.tscn" id="3_ghvbj"]
+[ext_resource type="PackedScene" uid="uid://drjkcxnjw1puf" path="res://components/camera/camera.tscn" id="4_6mel3"]
 [ext_resource type="Environment" uid="uid://blq86t7w2w2jx" path="res://scenes/main/world_environment.tres" id="4_wm2y1"]
 [ext_resource type="PackedScene" uid="uid://cwsi6esc3qke8" path="res://scenes/unit_controller/unit_controller.tscn" id="6_d141s"]
 
@@ -28,36 +28,24 @@ transform = Transform3D(0.45685, 0.824848, -0.333037, -0.187731, 0.455361, 0.870
 light_energy = 0.35
 shadow_enabled = true
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.693771, -0.480604, 0.536378, -4.00853e-09, 0.744767, 0.667324, -0.720196, -0.46297, 0.516698, 18.141, 23.6381, 17.6822)
-projection = 1
-fov = 63.8
-size = 16.5
-far = 70.0
-
-[node name="Card Controller" parent="Camera3D" instance=ExtResource("3_cyua4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -6, -5)
-visible = false
+[node name="Camera Pivot" parent="." instance=ExtResource("4_6mel3")]
 
 [node name="Map 0" parent="." instance=ExtResource("2_1kpld")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -0.865, 2.08165e-12)
+
+[node name="Spawner" parent="Map 0" index="0"]
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 
 [node name="Water" parent="." instance=ExtResource("3_ghvbj")]
 
 [node name="Unit Controller" parent="." node_paths=PackedStringArray("enemy_target") instance=ExtResource("6_d141s")]
 enemy_target = NodePath("../Map 0/Castle")
 
-[node name="Spawn Point 1" parent="Unit Controller/Enemy Spawn Points" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 2.08165e-12, 2.08165e-12)
+[node name="Locations" parent="Unit Controller/Enemy Spawn Path" index="0"]
+transform = Transform3D(0.00364977, 0, -0.999992, 0, 1, 0, 0.999992, 0, 0.00364977, -14.0614, 0, -14.0355)
 
-[node name="Spawn Point 2" parent="Unit Controller/Enemy Spawn Points" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 2.08165e-12, 2.08165e-12)
-
-[node name="Spawn Point 3" parent="Unit Controller/Enemy Spawn Points" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 14)
-
-[node name="Spawn Point 4" parent="Unit Controller/Enemy Spawn Points" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, -14)
+[node name="Soldier Point" parent="Unit Controller/Player Spawn Points" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.3302)
 
 [editable path="Map 0"]
 [editable path="Unit Controller"]

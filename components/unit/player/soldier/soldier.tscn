@@ -1,30 +1,48 @@
-[gd_scene load_steps=7 format=3 uid="uid://cl3jbkmewj2jn"]
+[gd_scene load_steps=9 format=3 uid="uid://cwh5xyde2x4f6"]
 
 [ext_resource type="Script" path="res://components/unit/player/soldier/soldier.gd" id="1_6rt70"]
-[ext_resource type="Script" path="res://components/health/health.gd" id="2_xjv4u"]
-[ext_resource type="Script" path="res://components/movement/movement.gd" id="3_6hhjd"]
+[ext_resource type="PackedScene" uid="uid://bbd73qxuye1u7" path="res://assets/characters/Knight.glb" id="2_80k8w"]
+[ext_resource type="Script" path="res://components/health/health.gd" id="2_dgm8c"]
+[ext_resource type="Script" path="res://components/movement/movement.gd" id="3_4se7y"]
+[ext_resource type="PackedScene" uid="uid://d2pes8idofl8h" path="res://components/attack/attack.tscn" id="4_uvl48"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0up8l"]
-albedo_color = Color(0.188235, 0.160784, 1, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o47o0"]
+albedo_color = Color(0.0705882, 0.239216, 1, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_gpsdc"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_t2swh"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_4xm18"]
+height = 0.7
+radius = 0.25
 
-[node name="Soldier" type="CharacterBody3D"]
+[node name="Soldier" type="CharacterBody3D" groups=["player_units"]]
 script = ExtResource("1_6rt70")
+distance_to_target = 1.5
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-material_override = SubResource("StandardMaterial3D_0up8l")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+visible = false
+material_override = SubResource("StandardMaterial3D_o47o0")
 mesh = SubResource("BoxMesh_gpsdc")
 
+[node name="Knight" parent="." instance=ExtResource("2_80k8w")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_t2swh")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.345303, 2.08165e-12)
+shape = SubResource("CylinderShape3D_4xm18")
 
 [node name="Health" type="Node3D" parent="."]
-script = ExtResource("2_xjv4u")
+script = ExtResource("2_dgm8c")
+max_health = 5
 
 [node name="Movement" type="Node3D" parent="."]
-script = ExtResource("3_6hhjd")
+script = ExtResource("3_4se7y")
+speed = 3.0
+
+[node name="Attack" parent="." instance=ExtResource("4_uvl48")]
+attack_value = 2
 
 [node name="Agent" type="NavigationAgent3D" parent="."]
+
+[node name="Attack Interval" type="Timer" parent="."]

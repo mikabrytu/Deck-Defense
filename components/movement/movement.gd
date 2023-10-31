@@ -19,8 +19,9 @@ func move(direction):
 	if _parent == null:
 		set_parent(get_parent())
 	
-	var velocity = direction * speed
-	_parent.velocity = _parent.velocity.move_toward(velocity, 0.25)
+	var vel = direction * speed
+#	_parent.velocity = _parent.velocity.move_toward(velocity, 0.25)
+	_parent.velocity = vel
 	_parent.move_and_slide()
 
 

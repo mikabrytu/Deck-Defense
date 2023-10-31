@@ -2,6 +2,9 @@ class_name Health
 extends Node3D
 
 
+signal damaged
+signal dead
+
 @export var max_health: int
 
 var _current: int
@@ -11,6 +14,8 @@ var _current: int
 
 
 func _ready():
+	EventCenter.damage.connect(_on_damage)
+	
 	reset()
 
 
@@ -23,7 +28,7 @@ func reset():
 
 func damage(amount: int) -> bool:
 	_current -= amount
-	return _current < 0
+	return _current > 0
 
 
 func get_current() -> int:
@@ -32,3 +37,15 @@ func get_current() -> int:
 
 func get_max() -> int:
 	return max_health
+
+
+# Listeners
+
+
+func _on_damage(h, d):
+	if h == self:
+		var alive = damage(d)
+		if not alive:
+			dead.emit()
+		else:
+			damaged.emit()
