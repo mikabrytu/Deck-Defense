@@ -21,9 +21,10 @@ func _ready():
 func _on_unit_spawned(unit: PackedScene):
 	var u = unit.instantiate()
 	u.set_unit()
-	u.position = player_spawn_point.position
-	
 	add_child(u)
+	
+	# When using global properties, the instance should be placed in the tree first
+	u.global_position = player_spawn_point.global_position
 
 
 func _on_enemy_spawn_timer_timeout():
