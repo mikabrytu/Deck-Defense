@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2y0tv0ov352n"]
+
+[ext_resource type="PackedScene" uid="uid://ii4xejsxmm8o" path="res://assets/characters/character_skeleton_minion.gltf" id="1_u7ixc"]
+
+[node name="character_skeleton_minion" instance=ExtResource("1_u7ixc")]
