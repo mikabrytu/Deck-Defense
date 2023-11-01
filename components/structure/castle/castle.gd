@@ -8,4 +8,5 @@ extends StaticBody3D
 
 
 func _process(_delta):
-	print("Castle Health: %s" % str(health.get_current()))
+#	print("Castle Health: %s" % str(health.get_current()))
+	pass
