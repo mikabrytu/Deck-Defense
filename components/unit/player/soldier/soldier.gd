@@ -10,8 +10,8 @@ var _is_attacking: bool = false
 
 func _process(_delta):
 	if _state == UNIT_STATE.IDLE:
-		var enemy = find_closest_enemy("enemies")
-		if enemy != null and not enemy.is_targeted():
+		var enemy = find_closest_enemy("enemies", false)
+		if enemy != null:
 			_closest_enemy = enemy
 			enemy.set_targeted()
 			
@@ -58,7 +58,8 @@ func _reset_unit():
 	
 	_closest_enemy = null
 	_is_attacking = false
-	_state = UNIT_STATE.IDLE
+	
+	change_state(UNIT_STATE.IDLE)
 
 
 # Listeners
@@ -66,6 +67,8 @@ func _reset_unit():
 
 func _on_attack():
 	if _is_enemy_valid():
+		_anim_converter.attack()
+		
 		var enemy_health = _closest_enemy.get_node("Health")
 		EventCenter.damage.emit(enemy_health, $Attack.attack_value)
 

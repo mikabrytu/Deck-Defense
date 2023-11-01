@@ -44,7 +44,7 @@ func _attack():
 		_is_attacking = true
 		start_attacking(_on_attack_timeout)
 	else:
-		_state = UNIT_STATE.IDLE
+		change_state(UNIT_STATE.IDLE)
 
 
 # Listeners
@@ -55,7 +55,7 @@ func _on_attack_timeout():
 
 
 func _on_damaged():
-	_state = UNIT_STATE.IDLE
+	change_state(UNIT_STATE.IDLE)
 	
 	var enemy = find_closest_enemy("player_units")
 	if enemy != null:

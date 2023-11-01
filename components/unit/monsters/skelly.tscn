@@ -29,7 +29,7 @@ shape = SubResource("CylinderShape3D_gffe7")
 
 [node name="Health" type="Node3D" parent="."]
 script = ExtResource("3_th0jw")
-max_health = 300
+max_health = 3
 
 [node name="Movement" type="Node3D" parent="."]
 script = ExtResource("4_xgwu2")
